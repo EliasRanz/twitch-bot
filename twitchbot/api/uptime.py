@@ -1,8 +1,8 @@
 #!C:\Python27\python.exe
 import requests
 
-from config import BASE_URL
-from .. import settings
+from twitchbot.api.config import BASE_URL
+from twitchbot import settings
 
 
 def stream_uptime():
@@ -10,4 +10,3 @@ def stream_uptime():
     print response
     # return uptime
 
-stream_uptime()
