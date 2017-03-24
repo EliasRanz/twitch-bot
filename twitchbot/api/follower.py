@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 
 import requests
 
-from config import BASE_URL, API_VERSION_HEADER
-from .. import settings
+from twitchbot.api.config import BASE_URL, API_VERSION_HEADER
+from twitchbot import settings
 
 
 HEADERS = {

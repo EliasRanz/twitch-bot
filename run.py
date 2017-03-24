@@ -5,10 +5,10 @@ import random
 from twisted.internet import task
 from twisted.internet import reactor
 
-from read import get_user, get_message
-from Socket import open_socket, send_message
-from initialize import join_room
-from api.follower import get_followers
+from twitchbot.read import get_user, get_message
+from twitchbot.socket import open_socket, send_message
+from twitchbot.initialize import join_room
+from twitchbot.api.follower import get_followers
 
 
 def cron(interval, function):
@@ -62,4 +62,7 @@ def init():
                     send_message(s, "You lost better luck next time!")
 
 
-init()
+# init()
+
+from twitchbot.api import uptime
+uptime.stream_uptime()

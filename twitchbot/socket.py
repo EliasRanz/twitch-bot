@@ -1,6 +1,6 @@
 #!C:\Python27\python.exe
 import socket
-from settings import HOST, PORT, PASSWORD, BOT_USERNAME, CHANNEL
+from twitchbot.settings import HOST, PORT, PASSWORD, BOT_USERNAME, CHANNEL
 
 
 def open_socket():

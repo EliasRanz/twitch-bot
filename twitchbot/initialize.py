@@ -1,6 +1,6 @@
 #!C:\Python27\python.exe
 import string
-from Socket import send_message
+from twitchbot.socket import send_message
 
 
 def join_room(s):
