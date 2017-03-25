@@ -1,29 +1,21 @@
 #!C:\Python27\python.exe
-from datetime import datetime, timedelta
-
+from datetime import datetime
+import time as t
 import requests
 
-from twitchbot.api.config import BASE_URL, API_VERSION_HEADER
-from twitchbot import settings
+from twitchbot.api.config import BASE_URL, HEADERS
+from twitchbot.settings import CHANNEL
 
 
-HEADERS = {
-    'Accept': API_VERSION_HEADER,
-}
-
-
-def get_followers():
-    response = requests.get(BASE_URL + '/channels/' + settings.CHANNEL + '/follows?client_id=' + settings.TWITCH_CLIENT_ID,
+def recent_followers():
+    response = requests.get(BASE_URL + '/channels/' + CHANNEL + '/follows?limit=100&order=DESC',
                                        headers=HEADERS).json()
+    recent_followers_list = []
     followers = response['follows']
-
-    recent_followers = []
-    now = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-    today = datetime.strptime(now, '%Y-%m-%dT%H:%M:%SZ')
-    five_minutes_ago = today - timedelta(minutes=5)
     for follower in followers:
         follow_time = datetime.strptime(follower['created_at'], '%Y-%m-%dT%H:%M:%SZ')
-        if follow_time < five_minutes_ago:
-            recent_followers.append(follower['user']['display_name'])
-    recent_followers[-1] = ' and %s' % recent_followers[-1]
-    return recent_followers
+        time_elapsed = t.mktime(follow_time.timetuple())
+        if time_elapsed >= 300:
+            recent_followers_list.append(follower['user']['display_name'])
+    return recent_followers_list
+recent_followers()

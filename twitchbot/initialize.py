@@ -1,6 +1,6 @@
 #!C:\Python27\python.exe
 import string
-from twitchbot.socket import send_message
+from twitchbot.connection import send_message
 
 
 def join_room(s):
@@ -14,7 +14,7 @@ def join_room(s):
         for line in temp:
             print(line)
             loading = loading_complete(line)
-    # send_message(s, "Hello everyone.")
+    # send_message(s, "/me Hello everyone. How are you guys doing today?")
 
 
 def loading_complete(line):
