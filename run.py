@@ -45,14 +45,14 @@ def init():
                 break
 
             if "!roulette" in message:
-                spin = random.randint(1, 38)
+                spin = random.randint(1, 10)
                 print spin
                 if spin == 3:
                     send_message(s, "@" + user + " You got lucky this time unfortunately. "
                                                  "I was getting excited for a minute.")
                 else:
                     send_message(s, "/timeout " + user + " 1")
-                    send_message(s, "You lost better luck next time!")
+                    send_message(s, "@" + user + " You lost better luck next time!")
 
             if "!uptime" in message:
                 send_message(s, stream_uptime())
